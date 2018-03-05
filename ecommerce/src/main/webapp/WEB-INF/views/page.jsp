@@ -23,7 +23,7 @@
 
 <title>Shopping - ${title}</title>
 <script type="text/javascript">
-	window.menu='${title}';
+	window.menu = '${title}';
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -38,41 +38,45 @@
 </head>
 
 <body>
+	<div class="wrapper">
+		<!-- Navigation -->
+		<%@include file="./shared/navbar.jsp"%>
 
-	<!-- Navigation -->
-	<%@include file="./shared/navbar.jsp"%>
+		<!-- Page Content -->
+		<div class="content">
+			<!-- Loading home content -->
+			<c:if test="${userClickHome == true}">
+				<%@include file="home.jsp"%>
+			</c:if>
 
-	<!-- Page Content -->
-	<!-- Loading home content -->
-	<c:if test="${userClickHome == true}">
-		<%@include file="home.jsp"%>
-	</c:if>
+			<!-- Loading when user click  about page -->
+			<c:if test="${userClickAbout == true}">
+				<%@include file="about.jsp"%>
+			</c:if>
 
-	<!-- Loading when user click  about page -->
-	<c:if test="${userClickAbout == true}">
-		<%@include file="about.jsp"%>
-	</c:if>
+			<!-- Loading when user click contact page -->
+			<c:if test="${userClickContact == true}">
+				<%@include file="contact.jsp"%>
+			</c:if>
 
-	<!-- Loading when user click contact page -->
-	<c:if test="${userClickContact == true}">
-		<%@include file="contact.jsp"%>
-	</c:if>
+			<!-- Loading when user click service page -->
+			<c:if
+				test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+				<%@include file="listProducts.jsp"%>
+			</c:if>
 
-	<!-- Loading when user click service page -->
-	<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
-		<%@include file="listProducts.jsp"%>
-	</c:if>
+		</div>
 
+		<!-- Footer -->
+		<%@include file="./shared/footer.jsp"%>
 
-
-	<!-- Footer -->
-	<%@include file="./shared/footer.jsp"%>
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="${js}/jquery.min.js"></script>
-	<script src="${js}/bootstrap.bundle.min.js"></script>
-	<script src="${js}/myapp.js"></script>
-	
+		<!-- Bootstrap core JavaScript -->
+		<script src="${js}/jquery.js"></script>
+		<script src="${js}/bootstrap.bundle.min.js"></script>
+		<script src="${js}/bootstrap.min.js"></script>
+		<script src="${js}/myapp.js"></script>
+		<script src="${js}/bootstrap.js"></script>
+	</div>
 </body>
 
 </html>
